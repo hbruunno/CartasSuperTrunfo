@@ -7,7 +7,7 @@ int main()
   char estado1;
   char codigo1[4];
   char cidade1[50];
-  int populacao1;
+  unsigned long int populacao1;
   float area1;
   float pib1;
   int pontos1;
@@ -17,7 +17,7 @@ int main()
   char estado2;
   char codigo2[4];
   char cidade2[50];
-  int populacao2;
+  unsigned long int populacao2;
   float area2;
   float pib2;
   int pontos2;
@@ -80,6 +80,11 @@ int main()
   percapta1 = pib1 / populacao1;
   percapta2 = pib2 / populacao2;
 
+  //calcular o super poder
+  long double superPoder1 = (populacao1 + area1 + pib1 +pontos1) - densidade1;
+  long double superPoder2 = (populacao2 + area2 + pib2 +pontos2) - densidade2;
+
+
 
   printf("\n CARTAS CADASTRADAS \n");
 
@@ -87,7 +92,7 @@ int main()
   printf("Estado: %c\n", estado1);
   printf("Codigo: %s\n", codigo1);
   printf("Nome da Cidade: %s\n", cidade1);
-  printf("Populacao: %d\n", populacao1);
+  printf("Populacao: %lu\n", populacao1);
   printf("Area: %.2f km2\n", area1);
   printf("PIB: %.2f Bilhoes de reais\n", pib1);
   printf("Numero de Pontos Turisticos: %d\n", pontos1);
@@ -98,12 +103,23 @@ int main()
   printf("Estado: %c\n", estado2);
   printf("Codigo: %s\n", codigo2);
   printf("Nome da Cidade: %s\n", cidade2);
-  printf("Populacao: %d\n", populacao2);
+  printf("Populacao: %lu\n", populacao2);
   printf("Area: %.2f km2\n", area2);
   printf("PIB: %.2f Bilhoes de reais\n", pib2);
   printf("Numero de Pontos Turisticos: %d\n", pontos2);
   printf("Densidade Populacional: %.2f hab/km²\n", densidade2);
   printf("PIB per Capita: %.2f reais\n\n", percapta2);
+
+  printf("Coparação de cartas:\n");
+  printf("Populacao: Carta 1 vence (%d)\n", populacao1 > populacao2);
+  printf("Area: Carta 1 vence (%d)\n", area1 > area2);
+  printf("PIB: Carta 1 vence (%d)\n", pib1 > pib2);
+  printf("Potos turisticos: Carta 1 vence (%d)\n", pontos1>pontos2);
+  printf("Densidade Populacional: Carta 1 vence (%d)\n", densidade1 < densidade2);
+  printf("PIB percapta: Carta 1 vence (%d)\n", percapta1 > percapta2);
+  printf("Super Poder: Carta 1 vence (%d)\n", superPoder1 > superPoder2);
+
+
 
   return 0;
 }
